@@ -7,6 +7,8 @@ const PORT = process.env.PORT || 3000;
 
 const prisma = new PrismaClient();
 
+app.use(express.json());
+
 // Serve static files from the 'public' folder
 app.use(express.static(path.join(__dirname, 'public')));
 

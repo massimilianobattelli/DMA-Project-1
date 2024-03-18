@@ -8,7 +8,7 @@ module.exports = function(prisma) {
   router.get('/', async (req, res) => {
     try {
       const allListItems = await prisma.list.findMany();
-      res.json(allListItems);
+      res.status(200).json(allListItems);
     } catch (error) {
       console.error(error);
       res.status(500).send('Error fetching data from database');
@@ -17,6 +17,9 @@ module.exports = function(prisma) {
 
   // Route to handle form submission and add item to the database
   router.post('/add-person', async (req, res) => {
+
+    console.log(JSON.stringify(req.body))
+
     const  itemName  = req.body.itemName;
     
     try {
